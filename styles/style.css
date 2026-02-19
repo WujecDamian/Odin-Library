@@ -25,6 +25,25 @@ html {
 body {
   background-color: var(--darkblue);
 }
-header h1 {
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .logo__text {
   color: var(--yellow);
+}
+.logo {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr;
+}
+.logo__icon {
+  justify-self: center;
+  width: 100px;
+  filter: brightness(0) saturate(100%) invert(82%) sepia(33%) saturate(4347%)
+    hue-rotate(359deg) brightness(102%) contrast(106%);
+}
+.logo__text {
+  font-size: 1rem;
+  text-align: center;
 }
