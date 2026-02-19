@@ -3,3 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root {
+  --darkblue: #001d3d;
+  --blue: #003566;
+  --yellow: #ffc300;
+}
+body {
+  background-color: var(--darkblue);
+}
