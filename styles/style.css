@@ -28,6 +28,7 @@ body {
 .header {
   display: flex;
   justify-content: center;
+  background-color: var(--blue);
   align-items: center;
 }
 .header .logo__text {
@@ -35,7 +36,8 @@ body {
 }
 .logo {
   display: grid;
-  grid-template: 1fr 1fr / 1fr;
+  grid-template: 1fr / 1fr;
+  margin: 1rem;
 }
 .logo__icon {
   justify-self: center;
