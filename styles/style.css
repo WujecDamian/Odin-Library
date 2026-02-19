@@ -64,10 +64,7 @@ body {
   flex-direction: column;
   gap: 0.5rem;
 }
-.form input {
-  display: block;
-  margin-bottom: 2rem;
-}
+
 .form h2 {
   text-align: center;
 }
@@ -79,6 +76,8 @@ body {
   margin-top: 2rem;
 }
 .form input {
+  display: block;
+  margin-bottom: 2rem;
   height: 2rem;
   border-radius: 2rem;
   corner-shape: squircle;
@@ -90,4 +89,6 @@ body {
 .form input[type="submit"] {
   background-color: var(--blue);
   text-align: center;
+  padding: 1rem 1rem 1.75rem 1rem;
+  margin: 0;
 }
