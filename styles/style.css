@@ -115,7 +115,20 @@ body {
 .form input[type="submit"]:focus {
   border: 1px solid white;
 }
+.books {
+  display: grid;
+  grid-template:
+    repeat(auto-fit, minmax(250px, 350px))
+    / repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1rem;
+  margin: 2rem;
+}
 .book__card {
-  min-width: 150px;
-  background-color: white;
+  display: grid;
+  background-color: rgb(214, 196, 196);
+  place-content: center;
+  text-align: center;
+}
+.book__title {
+  font-size: 2rem;
 }
