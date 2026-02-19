@@ -85,10 +85,33 @@ body {
   background-color: var(--darkblue);
   color: white;
   padding: 1rem;
+  transition:
+    transform 0.2s ease-in-out,
+    border 0.1s ease-in-out;
+}
+.form input:hover {
+  transform: translateY(-1px);
+}
+.form input:focus,
+.form input:active {
+  border: 3px solid var(--blue);
+  outline: none;
 }
 .form input[type="submit"] {
+  display: flex;
+  height: 2.5rem;
+  cursor: pointer;
+  padding: 0;
   background-color: var(--blue);
   text-align: center;
-  padding: 1rem 1rem 1.75rem 1rem;
   margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.form input[type="submit"]:hover {
+  border: 3px solid var(--darkblue);
+}
+.form input[type="submit"]:active,
+.form input[type="submit"]:focus {
+  border: 1px solid white;
 }
