@@ -55,5 +55,6 @@ body {
 
 /* aside */
 .aside {
-  background: white;
+  background: var(--darkblue);
+  padding: 2rem 0 2rem 2rem;
 }
