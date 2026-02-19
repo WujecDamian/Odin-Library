@@ -115,3 +115,7 @@ body {
 .form input[type="submit"]:focus {
   border: 1px solid white;
 }
+.book__card {
+  min-width: 150px;
+  background-color: white;
+}
