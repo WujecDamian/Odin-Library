@@ -1,3 +1,5 @@
+const myLibrary = []
+
 function book (title, author, pages, read) {
   if (!new.target) {
     throw Error("You must use the 'new' operator to call the constructor")
@@ -23,3 +25,8 @@ function book (title, author, pages, read) {
 }
 const theHobbit = new book('The Hobbit', 'J.R.R. Tolkien', 295, false)
 console.log(theHobbit.info())
+
+function addBookToLibrary () {
+  // take params, create a book then store it in the array
+  let title = ''
+}
