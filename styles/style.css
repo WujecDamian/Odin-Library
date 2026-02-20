@@ -119,13 +119,14 @@ body {
   display: grid;
   grid-template:
     repeat(auto-fit, minmax(250px, 350px))
-    / repeat(auto-fit, minmax(350px, 1fr));
+    / repeat(auto-fit, minmax(450px, 1fr));
   gap: 2rem;
   margin: 2rem;
 }
 .book__card {
   display: grid;
-  background-image: url(../images/book-texture.jpg);
+  background-color: var(--blue);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.158);
   text-align: center;
   color: whitesmoke;
   border-top-right-radius: 1rem;
@@ -133,7 +134,7 @@ body {
 }
 .book__title {
   align-self: end;
-  font-size: clamp(1.5rem, 2vw, 3rem);
+  font-size: clamp(0.5rem, 1.5vw, 3rem);
 }
 .book__author {
   font-weight: 400;

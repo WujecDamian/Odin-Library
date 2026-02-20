@@ -28,9 +28,34 @@ function Book (id, title, author, pages, read) {
     )
   }
 }
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false)
-console.log(theHobbit.info())
+/* add books manually (starting array) */
+const theHobbit = new Book(
+  self.crypto.randomUUID(),
+  'The Hobbit',
+  'J.R.R. Tolkien',
+  295,
+  false
+)
+const sellOrBeSold = new Book(
+  self.crypto.randomUUID(),
+  'Sell Or Be Sold',
+  'Grant Cardone',
+  212,
+  true
+)
+const fortyEightLawsOfPower = new Book(
+  self.crypto.randomUUID(),
+  '48 Laws of Power',
+  'Robert Greene',
+  266,
+  true
+)
+myLibrary.push(theHobbit, sellOrBeSold, fortyEightLawsOfPower)
+renderBookCard()
+renderBookCard()
+renderBookCard()
 
+/* submit button - add book button eventListener and Function */
 submitBtn.addEventListener('click', addBookToLibrary)
 function addBookToLibrary (event) {
   // take params, create a book then store it in the array
