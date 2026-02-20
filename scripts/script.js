@@ -141,12 +141,17 @@ function removeButtons () {
 
   for (let i = 0; i < deleteButtons.length; i++) {
     deleteButtons[i].addEventListener('click', e => {
-      console.log(e.currentTarget.parentElement)
-      let myLibrary2 = myLibrary.filter(function (book) {
-        return book.id != e.currentTarget.parentElement.dataset.indexNumber
-      })
-      myLibrary = myLibrary2
+      console.log(e.currentTarget.parentElement.dataset.indexNumber)
+      console.log(myLibrary[i].id)
+      const isSameId = element =>
+        element.id === e.currentTarget.parentElement.dataset.indexNumber
+      let indexToDelete = myLibrary.findIndex(isSameId)
+      console.log(indexToDelete)
+      myLibrary.splice(indexToDelete, indexToDelete)
+      //find a way to get indexOf of item with e.currentTarget.parentElement.dataset...
+      //tutaj myLibrary.splice()
       console.table(myLibrary)
+      renderBookCardArray()
     })
   }
 }
