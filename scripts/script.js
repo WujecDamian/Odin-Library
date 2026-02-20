@@ -147,7 +147,11 @@ function removeButtons () {
         element.id === e.currentTarget.parentElement.dataset.indexNumber
       let indexToDelete = myLibrary.findIndex(isSameId)
       console.log(indexToDelete)
-      myLibrary.splice(indexToDelete, indexToDelete)
+      if (indexToDelete === 0) {
+        myLibrary.splice(indexToDelete, indexToDelete + 1)
+      } else {
+        myLibrary.splice(indexToDelete, indexToDelete)
+      }
       //find a way to get indexOf of item with e.currentTarget.parentElement.dataset...
       //tutaj myLibrary.splice()
       console.table(myLibrary)
