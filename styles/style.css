@@ -148,3 +148,19 @@ body {
   align-self: end;
   margin-bottom: 1rem;
 }
+.delete__btn {
+  display: flex;
+  align-self: end;
+  justify-self: end;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+}
+.delete__btn img {
+  padding: 1rem;
+}
+.delete__btn img:hover {
+  transform: scale(1.15);
+}
