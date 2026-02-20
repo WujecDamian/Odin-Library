@@ -51,9 +51,7 @@ const fortyEightLawsOfPower = new Book(
   true
 )
 myLibrary.push(theHobbit, sellOrBeSold, fortyEightLawsOfPower)
-renderBookCard()
-renderBookCard()
-renderBookCard()
+renderBookCardArray()
 
 /* submit button - add book button eventListener and Function */
 submitBtn.addEventListener('click', addBookToLibrary)
@@ -68,7 +66,6 @@ function addBookToLibrary (event) {
     myLibrary.push(book1)
   }
   event.preventDefault()
-  console.table(myLibrary)
   renderBookCard()
 }
 
@@ -93,4 +90,29 @@ function renderBookCard () {
     bookCard.appendChild(bookPages)
     booksSection.appendChild(bookCard)
   })
+}
+function renderBookCardArray () {
+  myLibrary.forEach(element => {
+    let bookCard = document.createElement('div')
+    bookCard.classList.add('book__card')
+    let bookTitle = document.createElement('h3')
+    bookTitle.classList.add('book__title')
+    bookCard.appendChild(bookTitle)
+    let bookAuthor = document.createElement('h4')
+    bookAuthor.classList.add('book__author')
+    bookCard.appendChild(bookAuthor)
+    let bookPages = document.createElement('h4')
+    bookPages.classList.add('book__pages')
+
+    bookTitle.innerText = element.title
+
+    bookAuthor.innerText = element.author
+
+    bookPages.innerText = element.pages
+
+    bookCard.appendChild(bookPages)
+    booksSection.appendChild(bookCard)
+  })
+  console.log('Starting array - predefined')
+  console.table(myLibrary)
 }
