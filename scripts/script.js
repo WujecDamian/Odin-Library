@@ -72,6 +72,8 @@ function addBookToLibrary (event) {
 function renderBookCard () {
   let bookCard = document.createElement('div')
   bookCard.classList.add('book__card')
+  bookCard.dataset.indexNumber = element.id
+
   let bookTitle = document.createElement('h3')
   bookTitle.classList.add('book__title')
   bookCard.appendChild(bookTitle)
@@ -80,14 +82,18 @@ function renderBookCard () {
   bookCard.appendChild(bookAuthor)
   let bookPages = document.createElement('h4')
   bookPages.classList.add('book__pages')
+  bookCard.appendChild(bookPages)
+  let deleteBtn = document.createElement('button')
+  deleteBtn.classList.add('delete__btn')
+  let deleteSvg = document.createElement('img')
+  deleteSvg.src = '../images/delete.svg'
+  deleteBtn.appendChild(deleteSvg)
+  bookCard.appendChild(deleteBtn)
+
   myLibrary.forEach(element => {
     bookTitle.innerText = element.title
-
     bookAuthor.innerText = element.author
-
     bookPages.innerText = element.pages
-
-    bookCard.appendChild(bookPages)
     booksSection.appendChild(bookCard)
   })
 }
@@ -95,6 +101,7 @@ function renderBookCardArray () {
   myLibrary.forEach(element => {
     let bookCard = document.createElement('div')
     bookCard.classList.add('book__card')
+    bookCard.dataset.indexNumber = element.id
     let bookTitle = document.createElement('h3')
     bookTitle.classList.add('book__title')
     bookCard.appendChild(bookTitle)
@@ -103,6 +110,13 @@ function renderBookCardArray () {
     bookCard.appendChild(bookAuthor)
     let bookPages = document.createElement('h4')
     bookPages.classList.add('book__pages')
+    bookCard.appendChild(bookPages)
+    let deleteBtn = document.createElement('button')
+    deleteBtn.classList.add('delete__btn')
+    let deleteSvg = document.createElement('img')
+    deleteSvg.src = '../images/delete.svg'
+    deleteBtn.appendChild(deleteSvg)
+    bookCard.appendChild(deleteBtn)
 
     bookTitle.innerText = element.title
 
@@ -110,9 +124,18 @@ function renderBookCardArray () {
 
     bookPages.innerText = element.pages
 
-    bookCard.appendChild(bookPages)
     booksSection.appendChild(bookCard)
   })
   console.log('Starting array - predefined')
   console.table(myLibrary)
+}
+
+const bookCards = document.querySelectorAll('.book__card')
+const deleteButtons = document.querySelectorAll('.delete__btn')
+console.log(bookCards)
+
+for (let i = 0; i < deleteButtons.length; i++) {
+  deleteButtons[i].addEventListener('click', e => {
+    e.currentTarget.parentElement.remove()
+  })
 }
