@@ -1,4 +1,4 @@
-const myLibrary = []
+let myLibrary = []
 const titleInput = document.querySelector('#title')
 const authorInput = document.querySelector('#author')
 const pagesInput = document.querySelector('#pages')
@@ -66,13 +66,15 @@ function addBookToLibrary (event) {
     myLibrary.push(book1)
   }
   event.preventDefault()
-  renderBookCard()
+
+  renderBookCardArray()
 }
 
-function renderBookCard () {
+/* function renderBookCard () {
+  booksSection.replaceChildren()
+
   let bookCard = document.createElement('div')
   bookCard.classList.add('book__card')
-  bookCard.dataset.indexNumber = element.id
 
   let bookTitle = document.createElement('h3')
   bookTitle.classList.add('book__title')
@@ -91,13 +93,16 @@ function renderBookCard () {
   bookCard.appendChild(deleteBtn)
 
   myLibrary.forEach(element => {
+    bookCard.dataset.indexNumber = element.id
     bookTitle.innerText = element.title
     bookAuthor.innerText = element.author
     bookPages.innerText = element.pages
     booksSection.appendChild(bookCard)
   })
-}
+  removeButtons()
+} */
 function renderBookCardArray () {
+  booksSection.replaceChildren()
   myLibrary.forEach(element => {
     let bookCard = document.createElement('div')
     bookCard.classList.add('book__card')
@@ -126,16 +131,22 @@ function renderBookCardArray () {
 
     booksSection.appendChild(bookCard)
   })
-  console.log('Starting array - predefined')
   console.table(myLibrary)
+  removeButtons()
 }
 
-const bookCards = document.querySelectorAll('.book__card')
-const deleteButtons = document.querySelectorAll('.delete__btn')
-console.log(bookCards)
+function removeButtons () {
+  const bookCards = document.querySelectorAll('.book__card')
+  const deleteButtons = document.querySelectorAll('.delete__btn')
 
-for (let i = 0; i < deleteButtons.length; i++) {
-  deleteButtons[i].addEventListener('click', e => {
-    e.currentTarget.parentElement.remove()
-  })
+  for (let i = 0; i < deleteButtons.length; i++) {
+    deleteButtons[i].addEventListener('click', e => {
+      console.log(e.currentTarget.parentElement)
+      let myLibrary2 = myLibrary.filter(function (book) {
+        return book.id != e.currentTarget.parentElement.dataset.indexNumber
+      })
+      myLibrary = myLibrary2
+      console.table(myLibrary)
+    })
+  }
 }
