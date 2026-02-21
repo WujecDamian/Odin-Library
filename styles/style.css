@@ -8,6 +8,21 @@
   --blue: #011930;
   --yellow: #ffc300;
 }
+.theme {
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --darkblue: rgb(255, 255, 255);
+    --blue: #09315f;
+    --yellow: #ffc300;
+  }
+  label,
+  input,
+  .form,
+  .form input[type="text"] {
+    color: black;
+  }
+}
 html {
   font-family:
     system-ui,
