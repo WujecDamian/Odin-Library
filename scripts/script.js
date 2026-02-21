@@ -139,11 +139,8 @@ function removeButtons () {
         e.currentTarget.parentElement.parentElement.dataset.indexNumber
       let indexToDelete = myLibrary.findIndex(isSameId)
       console.log(indexToDelete)
-      if (indexToDelete === 0) {
-        myLibrary.splice(indexToDelete, indexToDelete + 1)
-      } else {
-        myLibrary.splice(indexToDelete, indexToDelete)
-      }
+
+      myLibrary.splice(indexToDelete, 1)
 
       renderBookCardArray()
     })
