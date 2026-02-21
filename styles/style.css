@@ -149,6 +149,16 @@ body {
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
   cursor: pointer;
+  animation: appear 0.5s ease-in forwards;
+}
+@keyframes appear {
+  from {
+    transform: scale(0.99);
+    opacity: 0.95;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .book__title {
   align-self: end;

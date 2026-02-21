@@ -112,7 +112,6 @@ function renderBookCardArray () {
     buttonsSection.appendChild(deleteBtn)
     buttonsSection.appendChild(haveReadBtn)
     bookCard.appendChild(buttonsSection)
-
     bookTitle.innerText = element.title
 
     bookAuthor.innerText = element.author
