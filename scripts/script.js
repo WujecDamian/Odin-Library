@@ -98,7 +98,14 @@ function renderBookCardArray () {
     let haveReadBtn = document.createElement('button')
     haveReadBtn.classList.add('haveRead__btn')
     let haveReadSvg = document.createElement('img')
+    haveReadSvg.classList.add('haveRead__svg')
+
     haveReadSvg.src = '../images/book_ribbon.svg'
+    if (element.read) {
+      haveReadSvg.classList.add('readed')
+    } else {
+      haveReadSvg.classList.add('not-readed')
+    }
     haveReadBtn.appendChild(haveReadSvg)
 
     /* // haveread button end */
@@ -148,10 +155,9 @@ function haveReadButtons () {
   for (let i = 0; i < haveReadButtons.length; i++) {
     haveReadButtons[i].addEventListener('click', e => {
       if (myLibrary[i].read === true) {
-        e.currentTarget.classList.add('readed')
-        console.log(e.currentTarget.classList)
+        myLibrary[i].read = false
       } else {
-        console.log('niehej')
+        myLibrary[i].read = true
       }
       renderBookCardArray()
     })
