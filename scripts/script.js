@@ -116,10 +116,10 @@ function renderBookCardArray () {
   })
   console.table(myLibrary)
   removeButtons()
+  haveReadButtons()
 }
 
 function removeButtons () {
-  const bookCards = document.querySelectorAll('.book__card')
   const deleteButtons = document.querySelectorAll('.delete__btn')
 
   for (let i = 0; i < deleteButtons.length; i++) {
@@ -127,7 +127,6 @@ function removeButtons () {
       console.log(
         e.currentTarget.parentElement.parentElement.dataset.indexNumber
       )
-      console.log(myLibrary[i].id)
       const isSameId = element =>
         element.id ===
         e.currentTarget.parentElement.parentElement.dataset.indexNumber
@@ -138,33 +137,22 @@ function removeButtons () {
       } else {
         myLibrary.splice(indexToDelete, indexToDelete)
       }
-      //find a way to get indexOf of item with e.currentTarget.parentElement.dataset...
-      //tutaj myLibrary.splice()
-      console.table(myLibrary)
+
       renderBookCardArray()
     })
   }
 }
 function haveReadButtons () {
-  const bookCards = document.querySelectorAll('.book__card')
   const haveReadButtons = document.querySelectorAll('.haveRead__btn')
 
   for (let i = 0; i < haveReadButtons.length; i++) {
     haveReadButtons[i].addEventListener('click', e => {
-      console.log(e.currentTarget.parentElement.dataset.indexNumber)
-      console.log(myLibrary[i].id)
-      const isSameId = element =>
-        element.id === e.currentTarget.parentElement.dataset.indexNumber
-      let indexToDelete = myLibrary.findIndex(isSameId)
-      console.log(indexToDelete)
-      if (indexToDelete === 0) {
-        myLibrary.splice(indexToDelete, indexToDelete + 1)
+      if (myLibrary[i].read === true) {
+        e.currentTarget.classList.add('readed')
+        console.log(e.currentTarget.classList)
       } else {
-        myLibrary.splice(indexToDelete, indexToDelete)
+        console.log('niehej')
       }
-      //find a way to get indexOf of item with e.currentTarget.parentElement.dataset...
-      //tutaj myLibrary.splice()
-      console.table(myLibrary)
       renderBookCardArray()
     })
   }
