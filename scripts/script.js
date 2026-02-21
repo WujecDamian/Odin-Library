@@ -91,7 +91,7 @@ function renderBookCardArray () {
     let deleteBtn = document.createElement('button')
     deleteBtn.classList.add('delete__btn')
     let deleteSvg = document.createElement('img')
-    deleteSvg.src = '../images/delete.svg'
+    deleteSvg.src = './images/delete.svg'
     deleteBtn.appendChild(deleteSvg)
     bookCard.appendChild(deleteBtn)
     /* haveread Button */
@@ -100,7 +100,7 @@ function renderBookCardArray () {
     let haveReadSvg = document.createElement('img')
     haveReadSvg.classList.add('haveRead__svg')
 
-    haveReadSvg.src = '../images/book_ribbon.svg'
+    haveReadSvg.src = './images/book_ribbon.svg'
     if (element.read) {
       haveReadSvg.classList.add('readed')
     } else {
