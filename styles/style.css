@@ -148,7 +148,13 @@ body {
   align-self: end;
   margin-bottom: 1rem;
 }
-.delete__btn {
+.buttons__section {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.delete__btn,
+.haveRead__btn {
   display: flex;
   align-self: end;
   justify-self: end;
@@ -158,9 +164,17 @@ body {
   width: fit-content;
   height: fit-content;
 }
-.delete__btn img {
+.delete__btn img,
+.haveRead__btn img {
   padding: 1rem;
 }
-.delete__btn img:hover {
+.delete__btn img:hover,
+.haveRead__btn img:hover {
   transform: scale(1.15);
+}
+.haveRead__svg {
+}
+.readed {
+  filter: brightness(0) saturate(100%) invert(79%) sepia(48%) saturate(2001%)
+    hue-rotate(356deg) brightness(99%) contrast(107%);
 }
