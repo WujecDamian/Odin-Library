@@ -4,8 +4,8 @@
   box-sizing: border-box;
 }
 :root {
-  --darkblue: #001d3d;
-  --blue: #003566;
+  --darkblue: rgb(0, 6, 12);
+  --blue: #011930;
   --yellow: #ffc300;
 }
 html {
