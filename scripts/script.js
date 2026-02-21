@@ -70,37 +70,6 @@ function addBookToLibrary (event) {
   renderBookCardArray()
 }
 
-/* function renderBookCard () {
-  booksSection.replaceChildren()
-
-  let bookCard = document.createElement('div')
-  bookCard.classList.add('book__card')
-
-  let bookTitle = document.createElement('h3')
-  bookTitle.classList.add('book__title')
-  bookCard.appendChild(bookTitle)
-  let bookAuthor = document.createElement('h4')
-  bookAuthor.classList.add('book__author')
-  bookCard.appendChild(bookAuthor)
-  let bookPages = document.createElement('h4')
-  bookPages.classList.add('book__pages')
-  bookCard.appendChild(bookPages)
-  let deleteBtn = document.createElement('button')
-  deleteBtn.classList.add('delete__btn')
-  let deleteSvg = document.createElement('img')
-  deleteSvg.src = '../images/delete.svg'
-  deleteBtn.appendChild(deleteSvg)
-  bookCard.appendChild(deleteBtn)
-
-  myLibrary.forEach(element => {
-    bookCard.dataset.indexNumber = element.id
-    bookTitle.innerText = element.title
-    bookAuthor.innerText = element.author
-    bookPages.innerText = element.pages
-    booksSection.appendChild(bookCard)
-  })
-  removeButtons()
-} */
 function renderBookCardArray () {
   booksSection.replaceChildren()
   myLibrary.forEach(element => {
@@ -116,12 +85,26 @@ function renderBookCardArray () {
     let bookPages = document.createElement('h4')
     bookPages.classList.add('book__pages')
     bookCard.appendChild(bookPages)
+    /* deleteBtn */
+    let buttonsSection = document.createElement('div')
+    buttonsSection.classList.add('buttons__section')
     let deleteBtn = document.createElement('button')
     deleteBtn.classList.add('delete__btn')
     let deleteSvg = document.createElement('img')
     deleteSvg.src = '../images/delete.svg'
     deleteBtn.appendChild(deleteSvg)
     bookCard.appendChild(deleteBtn)
+    /* haveread Button */
+    let haveReadBtn = document.createElement('button')
+    haveReadBtn.classList.add('haveRead__btn')
+    let haveReadSvg = document.createElement('img')
+    haveReadSvg.src = '../images/book_ribbon.svg'
+    haveReadBtn.appendChild(haveReadSvg)
+
+    /* // haveread button end */
+    buttonsSection.appendChild(deleteBtn)
+    buttonsSection.appendChild(haveReadBtn)
+    bookCard.appendChild(buttonsSection)
 
     bookTitle.innerText = element.title
 
@@ -141,6 +124,33 @@ function removeButtons () {
 
   for (let i = 0; i < deleteButtons.length; i++) {
     deleteButtons[i].addEventListener('click', e => {
+      console.log(
+        e.currentTarget.parentElement.parentElement.dataset.indexNumber
+      )
+      console.log(myLibrary[i].id)
+      const isSameId = element =>
+        element.id ===
+        e.currentTarget.parentElement.parentElement.dataset.indexNumber
+      let indexToDelete = myLibrary.findIndex(isSameId)
+      console.log(indexToDelete)
+      if (indexToDelete === 0) {
+        myLibrary.splice(indexToDelete, indexToDelete + 1)
+      } else {
+        myLibrary.splice(indexToDelete, indexToDelete)
+      }
+      //find a way to get indexOf of item with e.currentTarget.parentElement.dataset...
+      //tutaj myLibrary.splice()
+      console.table(myLibrary)
+      renderBookCardArray()
+    })
+  }
+}
+function haveReadButtons () {
+  const bookCards = document.querySelectorAll('.book__card')
+  const haveReadButtons = document.querySelectorAll('.haveRead__btn')
+
+  for (let i = 0; i < haveReadButtons.length; i++) {
+    haveReadButtons[i].addEventListener('click', e => {
       console.log(e.currentTarget.parentElement.dataset.indexNumber)
       console.log(myLibrary[i].id)
       const isSameId = element =>
