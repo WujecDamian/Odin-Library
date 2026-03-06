@@ -7,11 +7,11 @@ const booksSection = document.querySelector('.books')
 
 class Book {
   constructor (id, title, author, pages, read) {
-    this.id = id
+    this.id = id ?? crypto.randomUUID()
     this.title = title
     this.author = author
-    this.pages = pages
-    this.read = read
+    this.pages = Number(pages)
+    this.read = !!read
   }
   info () {
     console.log(
@@ -20,12 +20,8 @@ class Book {
       } pages, ${this.haveRead()} `
     )
   }
-  haveRead () {
-    if (this.read) {
-      return 'already read it'
-    } else {
-      return 'not read yet'
-    }
+  toogleRead () {
+    this.read = !this.read
   }
 }
 /* add books manually (starting array) */
@@ -53,8 +49,23 @@ const fortyEightLawsOfPower = new Book(
 myLibrary.push(theHobbit, sellOrBeSold, fortyEightLawsOfPower)
 renderBookCardArray()
 
+//! form */
+const title = document.querySelector('#title')
+const author = document.querySelector('#author')
+const pages = document.querySelector('#pages')
+
+//! form */
+/* const form = document.querySelector('.form')
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+
+  const title = titleInput.value.trim()
+  const author = authorInput.value.trim()
+  const pages = pagesInput.value.trim()
+}) */
+
 /* submit button - add book button eventListener and Function */
-submitBtn.addEventListener('click', addBookToLibrary)
 function addBookToLibrary (event) {
   // take params, create a book then store it in the array
   let id = self.crypto.randomUUID()
@@ -75,7 +86,7 @@ function renderBookCardArray () {
   myLibrary.forEach(element => {
     let bookCard = document.createElement('div')
     bookCard.classList.add('book__card')
-    bookCard.dataset.indexNumber = element.id
+    bookCard.dataset.id = element.id
     let bookTitle = document.createElement('h3')
     bookTitle.classList.add('book__title')
     bookCard.appendChild(bookTitle)
@@ -121,11 +132,33 @@ function renderBookCardArray () {
     booksSection.appendChild(bookCard)
   })
   console.table(myLibrary)
-  removeButtons()
-  haveReadButtons()
 }
 
-function removeButtons () {
+function attachLibraryListeners () {
+  booksSection.addEventListener('click', e => {
+    const card = e.target.closest('.book__card')
+    if (!card) return
+
+    const id = card.dataset.id
+    const book = myLibrary.find(b => b.id === id)
+    if (!book) return
+
+    //delete btn
+    if (e.target.closest('.delete__btn')) {
+      myLibrary = myLibrary.filter(book => book.id !== id)
+      renderBookCardArray()
+      return
+    }
+    //toggle read btn
+    if (e.target.closest('.haveRead__btn')) {
+      book.toogleRead()
+      renderBookCardArray()
+      return
+    }
+  })
+}
+attachLibraryListeners()
+/* function removeButtons () {
   const deleteButtons = document.querySelectorAll('.delete__btn')
 
   for (let i = 0; i < deleteButtons.length; i++) {
@@ -159,3 +192,4 @@ function haveReadButtons () {
     })
   }
 }
+ */
