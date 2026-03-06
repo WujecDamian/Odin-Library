@@ -49,13 +49,8 @@ const fortyEightLawsOfPower = new Book(
 myLibrary.push(theHobbit, sellOrBeSold, fortyEightLawsOfPower)
 renderBookCardArray()
 
-//! form */
-const title = document.querySelector('#title')
-const author = document.querySelector('#author')
-const pages = document.querySelector('#pages')
-
-//! form */
-/* const form = document.querySelector('.form')
+//! form
+const form = document.querySelector('.form')
 
 form.addEventListener('submit', e => {
   e.preventDefault()
@@ -63,23 +58,16 @@ form.addEventListener('submit', e => {
   const title = titleInput.value.trim()
   const author = authorInput.value.trim()
   const pages = pagesInput.value.trim()
-}) */
 
-/* submit button - add book button eventListener and Function */
-function addBookToLibrary (event) {
-  // take params, create a book then store it in the array
-  let id = self.crypto.randomUUID()
-  let title = titleInput.value
-  let author = authorInput.value
-  let pages = pagesInput.value
-  if (title != '' && author != '' && pages != '') {
-    const book1 = new Book(id, title, author, pages, false)
-    myLibrary.push(book1)
+  if (title && author && pages) {
+    const book = new Book(null, title, author, pages, false)
+    myLibrary.push(book)
+    renderBookCardArray()
+    titleInput.value = ''
+    authorInput.value = ''
+    pagesInput.value = ''
   }
-  event.preventDefault()
-
-  renderBookCardArray()
-}
+})
 
 function renderBookCardArray () {
   booksSection.replaceChildren()
@@ -158,38 +146,3 @@ function attachLibraryListeners () {
   })
 }
 attachLibraryListeners()
-/* function removeButtons () {
-  const deleteButtons = document.querySelectorAll('.delete__btn')
-
-  for (let i = 0; i < deleteButtons.length; i++) {
-    deleteButtons[i].addEventListener('click', e => {
-      console.log(
-        e.currentTarget.parentElement.parentElement.dataset.indexNumber
-      )
-      const isSameId = element =>
-        element.id ===
-        e.currentTarget.parentElement.parentElement.dataset.indexNumber
-      let indexToDelete = myLibrary.findIndex(isSameId)
-      console.log(indexToDelete)
-
-      myLibrary.splice(indexToDelete, 1)
-
-      renderBookCardArray()
-    })
-  }
-}
-function haveReadButtons () {
-  const haveReadButtons = document.querySelectorAll('.haveRead__btn')
-
-  for (let i = 0; i < haveReadButtons.length; i++) {
-    haveReadButtons[i].addEventListener('click', e => {
-      if (myLibrary[i].read === true) {
-        myLibrary[i].read = false
-      } else {
-        myLibrary[i].read = true
-      }
-      renderBookCardArray()
-    })
-  }
-}
- */
